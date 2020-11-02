@@ -1,0 +1,136 @@
+﻿@model AddVehicle
+
+@{
+   ViewData["Title"] = "Add a Vehicle";
+}
+<div class="text-left">
+   <h1 class="display-4">Add A Vehicle</h1>
+</div>
+<form method="post">
+   <table align="left">
+      <tr>
+         <td align="right"> Year: </td>
+         <td><input asp-for="Year" type="text" name="year" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Make: </td>
+         <td><input asp-for="Make" type="text" name="make" placeholder="Jeep" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Model: </td>
+         <td><input asp-for="Model" type="text" name="model" placeholder="Cherokee XJ" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Trim: </td>
+         <td><input asp-for="Trim" type="text" name="trim" placeholder="Sport" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Mileage: </td>
+         <td><input asp-for="Mileage" type="number" name="mileage" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Purchase Date: </td>
+         <td><input asp-for="PurchaseDate" type="date" name="purchaseDate" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Purchase Price: </td>
+         <td><input asp-for="PurchasePrice" type="text" name="purchasePrice" /></td>
+      </tr>
+      <tr>
+         <td colspan="2" align="center"><button type="button" name="picture" />Upload a Picture</td>
+      </tr>
+   </table>
+
+   <table align="center">
+      <tr>
+         <td align="right"> Engine Type: </td>
+         <td>
+            <select asp-for="EngineType" name="engineType">
+               <option value="Pushrod"> Pushrod </option>
+               <option value="dohc"> Dual Overhead Cam </option>
+               <option value="sohc"> Single Overhead Cam </option>
+            </select>
+         </td>
+      </tr>
+      <tr>
+         <td align="right"> Engine Description: </td>
+         <td> <input asp-for="EngineDescription" type="text" name="engineDescription" placeholder="ex 4.0L I6" /> </td>
+      </tr>
+      <tr>
+         <td align="right"> Horsepower: </td>
+         <td><input asp-for="Horsepower" type="text" name="hp" placeholder="190hp" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Torque: </td>
+         <td><input asp-for="Torque" type="text" name="torque" placeholder="225lb-ft" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Transmission Type: </td>
+         <td>
+            <select asp-for="TransmissionType" name="transmissionType">
+               <option value="Automatic"> Automatic </option>
+               <option value="Manual"> Manual </option>
+            </select>
+         </td>
+      </tr>
+      <tr>
+         <td align="right"> Drivetrain Type: </td>
+         <td>
+            <select asp-for="DrivetrainType" name="drivetrainType">
+               <option value="RWD"> RWD </option>
+               <option value="FWD"> FWD </option>
+               <option value="AWD"> AWD </option>
+               <option value="4X4"> 4X4 </option>
+            </select>
+         </td>
+      </tr>
+      <tr>
+         <td align="right"> Steering Type: </td>
+         <td>
+            <select asp-for="SteeringType" name="steeringType">
+               <option value="rackPinion"> Rack and Pinion </option>
+               <option value="trackBar"> Track Bar </option>
+            </select>
+         </td>
+
+      </tr>
+      <tr>
+         <td align="right"> Front Suspension Type: </td>
+         <td>
+            <select asp-for="FrontSuspensionType" name="frontSusType">
+               <option value="independentFront"> Independent Front Supension </option>
+               <option value="solidAxleCoil"> Solid Axle Coil Supension </option>
+            </select>
+         </td>
+      </tr>
+      <tr>
+         <td align="right"> Rear Suspension Type: </td>
+         <td>
+            <select asp-for="RearSuspensionType" name="rearSusType">
+               <option value="independentRear"> Independent Rear Supension </option>
+               <option value="solidAxleCoil"> Solid Axle Coil Supension </option>
+               <option value="solidAxleLeaf"> Solid Axle Leaf Supension </option>
+            </select>
+         </td>
+      </tr>
+      <tr>
+         <td align="right"> Brake Type: </td>
+         <td>
+            <select asp-for="BrakeType" name="brakeType">
+               <option value="drum"> Drum Brakes </option>
+               <option value="diskBrakes"> Disk Brakes </option>
+               <option value="diskAndDrum"> Disk & Drum Brakes </option>
+            </select>
+         </td>
+      </tr>
+      <tr>
+         <td align="right"></td>
+         <td>
+            <textarea asp-for="AboutVehicle" name="aboutMyVehicle" rows="4" cols="50" placeholder="About My Vehicle"></textarea>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="2" align="center"><input type="submit" name="Add to Garage" /></td>
+      </tr>
+   </table>
+</form>
