@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IQueryable<Vehicle>
+
+@{
    ViewData["Title"] = "My Account";
 }
 
@@ -15,22 +17,25 @@
       <th> Mileage </th>
       <th> Purchase Price </th>
       <th> Cost to Date </th>
-      <th> Update </th>
-      <th> Service Status </th>
+      <th> Vehicle Details </th>
+      <th> Update Service Record </th>
    </tr>
+   @foreach (Vehicle v in Model)
+   {
    <tr>
-      <td> 1999 </td>
-      <td> Jeep </td>
-      <td> Cherokee XJ</td>
-      <td> Sport </td>
-      <td> 192,800 </td>
-      <td> $750 </td>
-      <td> $5000 </td>
+      <td> @v.Year </td>
+      <td> @v.Make </td>
+      <td> @v.Model </td>
+      <td> @v.Trim </td>
+      <td> @v.Mileage </td>
+      <td> @v.PurchasePrice.ToString("c2") </td>
+      <td>  </td>
       <td>
-         <a href> Update </a>
+         <a asp-controller="Home" asp-action="VehicleDetail" asp-route-id="@v.Id"> Details </a>
       </td>
       <td class="bg-success"> </td>
    </tr>
+   }
 </table>
 <br />
 <button>

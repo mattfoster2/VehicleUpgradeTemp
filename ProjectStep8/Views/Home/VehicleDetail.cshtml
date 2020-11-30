@@ -1,0 +1,58 @@
+﻿@model Vehicle
+
+@{
+   ViewData["Title"] = "My Vehicle";
+}
+
+<h1> Welcome, Matt! </h1>
+<br />
+<h2> @Model.Year @Model.Make @Model.Model @Model.Trim </h2>
+
+<table align="left" class="table-bordered table-striped">
+   <tr>
+      <th> Engine Type </th>
+      <th> Engine Description </th>
+      <th> Horsepower </th>
+      <th> Torque </th>
+      <th> Transmission Type </th>
+      <th> Drivetrain Type </th>
+      <th> Steering Type </th>
+      <th> Front Suspension Type </th>
+      <th> Rear Suspension Type </th>
+      <th> Brake Type </th>
+   </tr>
+   <tr>
+      <td> @Model.EngineType </td>
+      <td> @Model.EngineDescription </td>
+      <td> @Model.Horsepower</td>
+      <td> @Model.Torque </td>
+      <td> @Model.TransmissionType </td>
+      <td> @Model.DrivetrainType </td>
+      <td> @Model.SteeringType </td>
+      <td> @Model.FrontSuspensionType </td>
+      <td> @Model.RearSuspensionType </td>
+      <td> @Model.BrakeType </td>
+   </tr>
+</table>
+<br />
+<hr />
+<div> </div>
+<table align="left" class="table-bordered table-striped">
+   <tr>
+      <th> Mileage </th>
+      <th> Purchase Price </th>
+      <th> Cost to Date </th>
+      <th> Service Status </th>
+      <th> Last Updated </th>
+   </tr>
+   <tr>
+      <td> @Model.Mileage </td>
+      <td> @Model.PurchasePrice.ToString("c2") </td>
+      <td> Some math </td>
+      <td> Red, Yellow, or Green </td>
+      <td> Last edited date </td>
+   </tr>
+</table>
+<br />
+<button class="btn-warning" asp-controller="Home" asp-action="EditVehicle" asp-route-id="@Model.Id"> Edit </button>
+<button class="btn-danger" asp-controller="Home" asp-action="DeleteVehicle" asp-route-id="@Model.Id"> Delete </button>

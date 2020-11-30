@@ -1,5 +1,3 @@
-using System;
-
 namespace ProjectStep8.Models
 {
    public class ErrorViewModel

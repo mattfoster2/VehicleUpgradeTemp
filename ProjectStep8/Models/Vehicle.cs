@@ -1,23 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.VisualBasic;
-using ProjectStep8.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectStep8.Models
 {
-   public class AddVehicle
+   public class Vehicle
    {
       // F i e l d s   &   P r o p e r t i e s 
+
+      public int Id { get; set; }
+
+      public int UserId { get; set; }
+
+      [Required(ErrorMessage ="Year is Required")]
       public int Year { get; set; }
+
+      [Required(ErrorMessage = "Make is Required")]
       public string Make { get; set; }
+
+      [Required(ErrorMessage = "Model is Required")]
       public string Model { get; set; }
       public string Trim { get; set; }
+
+      [Required(ErrorMessage = "Mileage is Required")]
       public int Mileage { get; set; }
       public DateTime PurchaseDate { get; set; }
+
+      [Column(TypeName = "decimal(8, 2)")]
       public decimal PurchasePrice { get; set; }
       public string EngineType { get; set; }
       public string EngineDescription { get; set; }
