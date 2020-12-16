@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using ProjectStep8.Models;
+using System;
 
 namespace ProjectStep8
 {
@@ -32,11 +35,21 @@ namespace ProjectStep8
          services.AddDbContext<AppDbContext>(options => //azuredb
          options.UseSqlServer
             (Configuration
-                .GetConnectionString("AzureConnection")));   //replace with ("AzureConnection")
+                .GetConnectionString("DefaultConnection")));   //replace with ("AzureConnection")
 
-         services.AddScoped<IVehicleRepository,
-                      EfVehicleRepository>();
-         services.AddControllersWithViews();
+         services.AddScoped<IVehicleRepository, EfVehicleRepository>();
+         services.AddScoped<IUserRepository, EfUserRepository>();
+         services.AddScoped<IComponentRepository, EfComponentRepository>();
+         services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+         services.AddMemoryCache(); //Session
+         services.AddSession(
+         //   options =>
+         //   {
+         //      options.IdleTimeout = TimeSpan.FromSeconds(10);
+         //   }
+         );
+         services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,6 +69,7 @@ namespace ProjectStep8
          app.UseStaticFiles();
 
          app.UseRouting();
+         app.UseSession();
 
          app.UseAuthorization();
 

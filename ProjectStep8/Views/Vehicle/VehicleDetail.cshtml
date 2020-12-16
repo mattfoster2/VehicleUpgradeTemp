@@ -1,0 +1,119 @@
+﻿@model Vehicle
+@inject IUserRepository UserRepository
+
+
+@{
+   ViewData["Title"] = "My Vehicle";
+}
+<div background-image="https://ak.picdn.net/shutterstock/videos/8738563/thumb/4.jpg">
+   <h2> Vehicle Details </h2>
+   <br />
+
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> @Model.Year @Model.Make @Model.Model @Model.Trim </legend>
+      <table>
+         <tr>
+            <th class="text-left"> Engine Type </th>
+            <th class="text-left"> Engine Description </th>
+            <th class="text-left"> Horsepower </th>
+            <th class="text-left"> Torque </th>
+            <th class="text-left"> Transmission Type </th>
+            <th class="text-left"> Drivetrain Type </th>
+            <th class="text-left"> Steering Type </th>
+            <th class="text-left"> Front Suspension Type </th>
+            <th class="text-left"> Rear Suspension Type </th>
+            <th class="text-left"> Brake Type </th>
+         </tr>
+         <tr>
+            <td> @Model.EngineType </td>
+            <td> @Model.EngineDescription </td>
+            <td> @Model.Horsepower</td>
+            <td> @Model.Torque </td>
+            <td> @Model.TransmissionType </td>
+            <td> @Model.DrivetrainType </td>
+            <td> @Model.SteeringType </td>
+            <td> @Model.FrontSuspensionType </td>
+            <td> @Model.RearSuspensionType </td>
+            <td> @Model.BrakeType </td>
+         </tr>
+      </table>
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <table>
+         <tr>
+            <th> Mileage </th>
+            <th> Purchase Price </th>
+            <th> Cost to Date </th>
+            <th> Service Status </th>
+            <th> Last Updated </th>
+         </tr>
+         <tr>
+            <td> @Model.Mileage </td>
+            <td> @Model.PurchasePrice.ToString("c2") </td>
+            <td> Some math </td>
+            <td> Red, Yellow, or Green </td>
+            <td>  </td>
+         </tr>
+      </table>
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> Engine Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "Engine")" />
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> Transmission Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "Transmission")" />
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> Drivetrain Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "Drivetrain")" />
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> Steering Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "Steering")" />
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> Front Suspension Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "Front Suspension")" />
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> Rear Suspension Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "Rear Suspension")" />
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> Fuel & Air Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "Fuel & Air")" />
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> HVAC Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "HVAC")" />
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> Exhaust & Emissions Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "Exhaust & Emissions")" />
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> Cooling Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "Cooling")" />
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> Brake Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "Brakes")" />
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> Electrical & Ignition Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "Electrical & Ignition")" />
+   </fieldset>
+   <fieldset class="border table-bordered custom-control-inline p-4 shadow align-top mb-4">
+      <legend> Other Components </legend>
+      <partial name="_ComponentTable" model="@Model.Components.Where(c => c.ComponentCategory == "Other")" />
+   </fieldset>
+
+   <br />
+   <button>
+      <a asp-controller="Home" asp-action="Index"> Back </a>
+   </button>
+   <button>
+      <a asp-controller="Component" asp-action="AddComponent" asp-route-vehicleId="@Model.Id"> Add a New Component </a>
+   </button>
+</div>

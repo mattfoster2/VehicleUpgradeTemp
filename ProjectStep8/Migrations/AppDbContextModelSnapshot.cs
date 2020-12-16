@@ -19,6 +19,96 @@ namespace ProjectStep8.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ProjectStep8.Models.Component", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AftermarketOrOem")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ComponentCategory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ComponentCondition")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("ComponentCost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ComponentManufacturer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ComponentName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("LaborCost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("PurchaseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PurchaseVendor")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ReplacedMileage")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VehicleId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("WarrantyExpiration")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VehicleId");
+
+                    b.ToTable("Component");
+                });
+
+            modelBuilder.Entity("ProjectStep8.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmailAddress")
+                        .IsUnique();
+
+                    b.ToTable("User");
+                });
+
             modelBuilder.Entity("ProjectStep8.Models.Vehicle", b =>
                 {
                     b.Property<int>("Id")
@@ -58,8 +148,8 @@ namespace ProjectStep8.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("PurchaseDate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateTime?>("PurchaseDate")
+                        .HasColumnType("date");
 
                     b.Property<decimal>("PurchasePrice")
                         .HasColumnType("decimal(8, 2)");
@@ -87,7 +177,16 @@ namespace ProjectStep8.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vehicles");
+                    b.ToTable("Vehicle");
+                });
+
+            modelBuilder.Entity("ProjectStep8.Models.Component", b =>
+                {
+                    b.HasOne("ProjectStep8.Models.Vehicle", "Vehicle")
+                        .WithMany("Components")
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

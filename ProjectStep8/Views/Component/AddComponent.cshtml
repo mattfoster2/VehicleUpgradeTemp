@@ -1,0 +1,95 @@
+﻿@model Component
+
+@{
+   ViewData["Title"] = "Add a Component";
+}
+
+<div class="text-left">
+   <h1 class="display-4">Add A Component</h1>
+</div>
+<form method="post">
+   <div asp-validation-summary="All"></div>
+   <table align="left">
+      <tr>
+         <td align="right"> Category: </td>
+         <td>
+            <select asp-for="ComponentCategory">
+               <option value="Engine"> Engine </option>
+               <option value="Transmission"> Transmission </option>
+               <option value="Drivetrain"> Drivetrain </option>
+               <option value="Steering"> Steering </option>
+               <option value="Front Suspension"> Front Suspension </option>
+               <option value="Rear Suspension"> Rear Suspension </option>
+               <option value="Fuel & Air"> Fuel & Air </option>
+               <option value="HVAC"> HVAC </option>
+               <option value="Exhaust & Emissions"> Exhaust & Emissions </option>
+               <option value="Cooling"> Cooling </option>
+               <option value="Brakes"> Brakes </option>
+               <option value="Electrical & Ignition"> Electrical & Ignition </option>
+               <option value="Other"> Other </option>
+            </select>
+         </td>
+      </tr>
+      <tr>
+         <td align="right"> Component Name: </td>
+         <td><input asp-for="ComponentName" type="text" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Component Condition: </td>
+         <td>
+            <select asp-for="ComponentCondition">
+               <option value="Good"> Good </option>
+               <option value="Okay"> Needs Serviced </option>
+               <option value="Replace Immediately"> Replace Immediately </option>
+            </select>
+         </td>
+      </tr>
+      <tr>
+         <td align="right"> Replaced Mileage: </td>
+         <td><input asp-for="ReplacedMileage" type="number" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Purchase Date: </td>
+         <td><input asp-for="PurchaseDate" type="date" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Component Cost: </td>
+         <td><input asp-for="ComponentCost" type="text" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Component Manufacturer: </td>
+         <td><input asp-for="ComponentManufacturer" type="text" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Purchase Vendor: </td>
+         <td><input asp-for="PurchaseVendor" type="text" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Labor Cost: </td>
+         <td><input asp-for="LaborCost" type="text" /></td>
+      </tr>
+      <tr>
+         <td align="right"> Warranty Expiration: </td>
+         <td><input asp-for="WarrantyExpiration" type="date" /></td>
+      </tr>
+      <tr>
+         <td align="right"> OE Type Replacement or Modification: </td>
+         <td>
+            <select asp-for="AftermarketOrOem">
+               <option value="OE Replacement"> OE Replacement </option>
+               <option value="Modification"> Modification </option>
+            </select>
+         </td>
+      </tr>
+      <tr>
+         <td></td>
+         <td>
+            <input type="submit" value="Add to Vehicle" />
+            <button>
+               <a asp-controller="Vehicle" asp-action="VehicleDetail" asp-route-vehicleId="@Model.VehicleId"> Back </> </a>
+            </button>
+         </td>
+      </tr>
+   </table>
+</form>
+

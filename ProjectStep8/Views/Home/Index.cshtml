@@ -1,46 +1,70 @@
 ﻿@model IQueryable<Vehicle>
 
+@inject IUserRepository UserRepository
+
+
+
 @{
    ViewData["Title"] = "My Account";
 }
 
-<h1> Welcome, Matt! </h1>
+<h1> Welcome! </h1>
 <br />
 <h2> My Garage </h2>
+@if (UserRepository.IsUserLoggedIn())@*allows for injection of repository to call methods in view.  AWESOME!*@
+{
+   <table class="table-bordered table-striped">
+      <tr>
+         <th> Year </th>
+         <th> Make </th>
+         <th> Model </th>
+         <th> Trim </th>
+         <th> Mileage </th>
+         <th> Purchase Price </th>
+         <th> Cost to Date </th>
+         <th> Vehicle Details </th>
+         <th> Update Service Record </th>
+         <th> Edit Vehicle Details</th>
+         <th> Delete </th>
+      </tr>
+      @foreach (Vehicle v in Model)
+      {
+         <tr>
+            <td> @v.Year </td>
+            <td> @v.Make </td>
+            <td> @v.Model </td>
+            <td> @v.Trim </td>
+            <td> @v.Mileage </td>
+            <td> @v.PurchasePrice.ToString("c2") </td>
+            <td>  </td>
+            <td>
+               <a asp-controller="Vehicle" asp-action="VehicleDetail" asp-route-id="@v.Id"> Details </a>
+            </td>
+            <td class="bg-success"> </td>
+            <td>
+               <button class="btn-warning btn-block">
+                  <a asp-controller="Vehicle" asp-action="EditVehicle" asp-route-id="@v.Id"> Edit </a>
+               </button>
+            </td>
+            <td>
+               <button class="btn-danger">
+                  <a asp-controller="Vehicle" asp-action="DeleteVehicle" asp-route-id="@v.Id"> Delete </a>
+               </button>
+            </td>
+         </tr>
+      }
+   </table>
+   <br />
 
-<table class="table-bordered table-striped">
-   <tr>
-      <th> Year </th>
-      <th> Make </th>
-      <th> Model </th>
-      <th> Trim </th>
-      <th> Mileage </th>
-      <th> Purchase Price </th>
-      <th> Cost to Date </th>
-      <th> Vehicle Details </th>
-      <th> Update Service Record </th>
-   </tr>
-   @foreach (Vehicle v in Model)
-   {
-   <tr>
-      <td> @v.Year </td>
-      <td> @v.Make </td>
-      <td> @v.Model </td>
-      <td> @v.Trim </td>
-      <td> @v.Mileage </td>
-      <td> @v.PurchasePrice.ToString("c2") </td>
-      <td>  </td>
-      <td>
-         <a asp-controller="Home" asp-action="VehicleDetail" asp-route-id="@v.Id"> Details </a>
-      </td>
-      <td class="bg-success"> </td>
-   </tr>
-   }
-</table>
-<br />
-<button>
-   <a asp-controller="Home" asp-action="AddVehicle"> Add a Vehicle </a>
-</button>
+   <button>
+      <a asp-controller="Vehicle" asp-action="AddVehicle"> Add a Vehicle </a>
+   </button>
+}
+else
+{
+   <br />
+   <h3> Login to add or view your vehicles </h3>
+}
 
 
 

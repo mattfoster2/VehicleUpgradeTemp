@@ -12,6 +12,10 @@ namespace ProjectStep8.Models
 
       public DbSet<Vehicle> Vehicles { get; set; }
 
+      public DbSet<User> Users { get; set; }
+
+      public DbSet<Component> Components { get; set; }
+
       // C o n s t r u c t o r s 
 
       public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
@@ -19,5 +23,14 @@ namespace ProjectStep8.Models
       }
 
       // M e t h o d s 
+
+      protected override void OnModelCreating(ModelBuilder modelBuilder)
+      {
+         base.OnModelCreating(modelBuilder);
+
+         modelBuilder.Entity<User>()
+                     .HasIndex(u => u.EmailAddress)
+                     .IsUnique(); 
+      }
    }
 }

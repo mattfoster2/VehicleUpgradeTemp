@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Component>
+<table>
+   <tr>
+      <th class="text-left"> Component Name </th>
+      <th class="text-left"> Current Condition </th>
+      <th class="text-left"> Replaced Mileage </th>
+      <th class="text-left"> Purchase Date </th>
+      <th class="text-left"> Component Cost </th>
+      <th class="text-left"> Labor Cost </th>
+      <th class="text-left"> Purchase Vendor </th>
+      <th class="text-left"> Component Manufacturer </th>
+      <th class="text-left"> Warranty Expiration </th>
+      <th class="text-left"> Upgrade or OEM Replacement </th>
+      <th class="text-left"> Update </th>
+      <th class="text-left"> Delete </th>
+   </tr>
+   @foreach (Component c in Model)
+   {
+    <tr>
+       <td> @c.ComponentName </td>
+       <td> @c.ComponentCondition </td>
+       <td> @c.ReplacedMileage </td>
+       <td> @c.PurchaseDate </td>
+       <td> @c.ComponentCost </td>
+       <td> @c.LaborCost </td>
+       <td> @c.PurchaseVendor </td>
+       <td> @c.ComponentManufacturer </td>
+       <td> @c.WarrantyExpiration </td>
+       <td> @c.AftermarketOrOem </td>
+       <td>
+          <a asp-controller="Component" asp-action="UpdateService" asp-route-id="@c.Id"> Update </a>
+       </td>
+       <td>
+          <a asp-controller="Component" asp-action="DeleteService" asp-route-id="@c.Id"> Delete </a>
+       </td>
+    </tr>
+    }
+</table>
