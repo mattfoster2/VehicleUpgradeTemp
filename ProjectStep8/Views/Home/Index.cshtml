@@ -8,11 +8,11 @@
    ViewData["Title"] = "My Account";
 }
 
-<h1> Welcome! </h1>
+<h1 class="text-lg-center"> Welcome to the Vehicle Upgrade Logger! </h1>
 <br />
-<h2> My Garage </h2>
 @if (UserRepository.IsUserLoggedIn())@*allows for injection of repository to call methods in view.  AWESOME!*@
 {
+   <h2> My Garage </h2>
    <table class="table-bordered table-striped">
       <tr>
          <th> Year </th>
@@ -62,8 +62,22 @@
 }
 else
 {
-   <br />
-   <h3> Login to add or view your vehicles </h3>
+<container class="text-center">
+   <p>
+      <h5>
+         If you enjoy saving money handling your own labor and the satisfaction of a job well done at your own hands,
+         but maybe just want a way to document what you've done, then this is the website for you.  My name is Matt, 
+         and I've spent years working to merge my hobby as a DIY mechanic with technology, to bring you this platform.
+      </h5>
+   </p>
+   <div class="container">
+      <img class="img-thumbnail" src="https://drive.google.com/thumbnail?id=1xFDxfUSk-3NSa9Alzp0owvHq52hEbQw6" />
+      <img class="img-thumbnail" src="https://drive.google.com/thumbnail?id=1pRZQP-bBKvk55_8D1tgHzi-GadNA7LJx" />
+      <img class="img-thumbnail" src="https://drive.google.com/thumbnail?id=1eM7rrP7uRvBmifE3LI8RKhaLnuwnrnwR" />
+   </div>
+</container>
+
+   <h3 class="text-lg-center"> Login to add or view and add your vehicles </h3>
 }
 
 

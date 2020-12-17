@@ -33,25 +33,31 @@ namespace ProjectStep8.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ComponentCategory")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ComponentCondition")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("ComponentCost")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(8, 2)");
 
                     b.Property<string>("ComponentManufacturer")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ComponentName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("LaborCost")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(8, 2)");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("PurchaseDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("PurchaseVendor")
                         .HasColumnType("nvarchar(max)");
@@ -73,6 +79,21 @@ namespace ProjectStep8.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("Component");
+                });
+
+            modelBuilder.Entity("ProjectStep8.Models.Component_Category.ComponentCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ComponentCategory");
                 });
 
             modelBuilder.Entity("ProjectStep8.Models.User", b =>

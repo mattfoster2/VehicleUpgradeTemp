@@ -18,7 +18,7 @@ namespace ProjectStep8.Models
       public EfVehicleRepository(AppDbContext context, IUserRepository userRepository)
       {
          _context = context;
-         _userRepository = userRepository;
+         _userRepository = userRepository;       
       }
       //                  C R U D   M e t h o d s
 

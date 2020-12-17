@@ -66,6 +66,7 @@ namespace ProjectStep8.Models
          {
             componentToUpdate.ComponentName = c.ComponentName;
             componentToUpdate.ComponentCondition = c.ComponentCondition;
+            componentToUpdate.ComponentCategory = c.ComponentCategory;
             componentToUpdate.ComponentCost = c.ComponentCost;
             componentToUpdate.ComponentManufacturer = c.ComponentManufacturer;
             componentToUpdate.AftermarketOrOem = c.AftermarketOrOem;
@@ -74,6 +75,7 @@ namespace ProjectStep8.Models
             componentToUpdate.PurchaseVendor = c.PurchaseVendor;
             componentToUpdate.ReplacedMileage = c.ReplacedMileage;
             componentToUpdate.WarrantyExpiration = c.WarrantyExpiration;
+            componentToUpdate.Notes = c.Notes;
             if (c.VehicleId > 0)
             {
                componentToUpdate.VehicleId = c.VehicleId;

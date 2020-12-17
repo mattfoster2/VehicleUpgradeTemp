@@ -8,6 +8,7 @@
    <h1 class="display-4">Add A Component</h1>
 </div>
 <form method="post">
+   <input type="hidden" asp-for="CategoryId" />
    <div asp-validation-summary="All"></div>
    <table align="left">
       <tr>
@@ -80,6 +81,10 @@
                <option value="Modification"> Modification </option>
             </select>
          </td>
+      </tr>
+      <tr>
+         <td align="right"> Notes </td>
+         <td><input asp-for="Notes" type="text" /></td>
       </tr>
       <tr>
          <td></td>

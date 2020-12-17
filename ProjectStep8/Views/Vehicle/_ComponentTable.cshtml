@@ -11,6 +11,7 @@
       <th class="text-left"> Component Manufacturer </th>
       <th class="text-left"> Warranty Expiration </th>
       <th class="text-left"> Upgrade or OEM Replacement </th>
+      <th class="text-left"> Notes </th>
       <th class="text-left"> Update </th>
       <th class="text-left"> Delete </th>
    </tr>
@@ -21,12 +22,13 @@
        <td> @c.ComponentCondition </td>
        <td> @c.ReplacedMileage </td>
        <td> @c.PurchaseDate </td>
-       <td> @c.ComponentCost </td>
-       <td> @c.LaborCost </td>
+       <td> @c.ComponentCost.ToString("c2") </td>
+       <td> @c.LaborCost.ToString("c2") </td>
        <td> @c.PurchaseVendor </td>
        <td> @c.ComponentManufacturer </td>
        <td> @c.WarrantyExpiration </td>
        <td> @c.AftermarketOrOem </td>
+       <td> @c.Notes  </td>
        <td>
           <a asp-controller="Component" asp-action="UpdateService" asp-route-id="@c.Id"> Update </a>
        </td>

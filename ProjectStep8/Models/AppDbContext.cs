@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProjectStep8.Models.Component_Category;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace ProjectStep8.Models
       public DbSet<User> Users { get; set; }
 
       public DbSet<Component> Components { get; set; }
+
+      public DbSet<ComponentCategory> Component_Categories { get; set; }
 
       // C o n s t r u c t o r s 
 
